@@ -25,8 +25,6 @@ const TaskSchema=new mongoose.Schema({
   type:Boolean
  }
 });
-
-
 const dateSchema=new mongoose.Schema({
   person:{
    type:String,

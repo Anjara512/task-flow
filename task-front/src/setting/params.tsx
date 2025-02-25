@@ -11,8 +11,8 @@ import Dropdown from "../components/dropdown";
 const Params = () => {
   const choice: string[] | number[] = ["grille", "liste"];
   const [open, setopen] = useState(false);
-  const [aff, setaff] = useState<string | number>("grille");
-  const { theme } = Theme();
+  const [aff, setaff] = useState<string | number>();
+  const { theme, changeDisposition, disposition } = Theme();
   const nav = useNavigate();
   const token = localStorage.getItem("token");
   const deconnexion = async () => {
@@ -30,6 +30,8 @@ const Params = () => {
   };
   const changeAff = (e: string | number) => {
     setaff(e);
+    changeDisposition(String(e));
+    localStorage.setItem("dispositon", String(disposition));
 
     setopen(false);
   };

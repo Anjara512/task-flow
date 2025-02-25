@@ -64,10 +64,10 @@ const Accountparams = () => {
       user.name = (form.get("name") as string)
         ? (form.get("name") as string)
         : res?.name;
-      user.name = (form.get("password") as string)
+      user.password = (form.get("password") as string)
         ? (form.get("password") as string)
         : res?.password;
-      user.name = (form.get("email") as string)
+      user.email = (form.get("email") as string)
         ? (form.get("email") as string)
         : res?.email;
 
@@ -80,7 +80,7 @@ const Accountparams = () => {
     }
 
     try {
-      const response = await Api.patch(`/modifyUser/${res?._id}`, user, {
+      const response = await Api.put(`/modifyUser/${res?._id}`, user, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       if (response.data) {
@@ -122,7 +122,7 @@ const Accountparams = () => {
             type="file"
             onChange={change}
             className="hidden"
-            name="name"
+            name=""
             id="file"
           />
           <Input

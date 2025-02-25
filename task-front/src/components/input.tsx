@@ -49,7 +49,7 @@ export const Button = ({ value }: buttonProps) => {
   return (
     <button
       className={cn(
-        "bg-blue-500 hover:bg-blue-700 text-white font-bold  py-2 px-4 rounded-full shadow-lg transform transition-all duation-300 hover:scle-105 focus:outline-none focus:ring-2 focus-ring-blue-500 focus:ring-opacity-50 "
+        "bg-blue-500 w-max  hover:bg-blue-700 text-white font-bold  py-2 px-4 rounded-full shadow-lg transform transition-all duation-300 hover:scle-105 focus:outline-none focus:ring-2 focus-ring-blue-500 focus:ring-opacity-50 "
       )}
     >
       {value}

@@ -16,6 +16,7 @@ import AddNotes from "./Notes/addNotes";
 import Params from "./setting/params";
 import Multimedia from "./Notes/multimedia";
 import Accountparams from "./setting/accountparams";
+import CompleteTask from "./Task/completeTask";
 const App = () => {
   return (
     <BrowserRouter>
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/params" element={<Params />} />
         <Route path="/multimedia" element={<Multimedia />} />
         <Route path="/accountparms" element={<Accountparams />} />
+        <Route path="/compltetTask" element={<CompleteTask />}></Route>
       </Routes>
     </BrowserRouter>
   );

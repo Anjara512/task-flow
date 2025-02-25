@@ -12,7 +12,7 @@ const Dropdown: React.FC<propsDown> = ({ nbrage, onclick }) => {
     <span
       style={{ scrollbarWidth: "none" }}
       className={cn(
-        "absolute h-52 w-max p-2 overflow-x-scroll font-medium text-sm rounded-md  bg-zinc-800 scroll-m-80",
+        "absolute h-52 w-max z-10 p-2 overflow-x-scroll font-medium text-sm rounded-md  bg-zinc-800 scroll-m-80",
         {
           "bg-zinc-400": theme !== "dark",
         }

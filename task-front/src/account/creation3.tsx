@@ -45,30 +45,41 @@ const creation3 = () => {
   };
 
   return (
-    <div className={cn("flex flex-col bg-zinc-900 h-screen")}>
+    <div
+      className={cn("flex flex-col bg-zinc-900 h-screen", {
+        "bg-zinc-50 text-zinc-900": theme !== "dark",
+      })}
+    >
       <Header />
       <main
-        className={cn("flex  h-full mt-15 bg-zinc-900", {
+        className={cn("flex w-full h-full mt-15 bg-zinc-900", {
           "bg-zinc-50": theme !== "dark",
         })}
       >
         <form
           action=""
           onSubmit={handleSub}
-          className="flex flex-col gap-10 text-white"
+          className="flex flex-col w-full gap-10 text-white"
         >
-          <label htmlFor="">votre pseudo</label>
+          <div className="w-full flex justify-center">
+            <h1 className="uppercase font-medium text-3xl p-3 h-max w-max border-1 border-lime-700 rounded-md ">
+              information personnel
+            </h1>
+          </div>
+          <label htmlFor="" className="text-2xl font-medium">
+            votre pseudo
+          </label>
           <input
             type="text"
             className={cn("input-dark", {
-              "input-white": theme !== "dark",
+              "input-white ml-2": theme !== "dark",
             })}
             name="name"
             id=""
           />
           <div className="flex flex-row gap-2">
             <div
-              className={cn("text-2xl text-stone-100", {
+              className={cn("text-2xl ml-4 text-stone-100", {
                 "text-black": theme !== "dark",
               })}
             >
@@ -77,7 +88,7 @@ const creation3 = () => {
                 <span
                   onClick={() => setopensexe(false)}
                   className={cn(
-                    "w-max h-max p-2 text-sm font-medium  border-4 text-white border-b-white bg-stone-900 rounded-md ",
+                    "w-max h-max p-2 ml-4 text-sm font-medium  border-4 text-white border-b-white bg-stone-900 rounded-md ",
                     {
                       "bg-black  text-zinc-800 border-zinc-800":
                         theme !== "dark",
@@ -96,7 +107,7 @@ const creation3 = () => {
           </div>
           <div>
             <span
-              className={cn("text-2xl text-stone-100", {
+              className={cn("text-2xl ml-4 text-stone-100", {
                 "text-black": theme !== "dark",
               })}
             >
@@ -107,7 +118,7 @@ const creation3 = () => {
               <span
                 onClick={() => setopenage(false)}
                 className={cn(
-                  "w-max h-max p-2 text-sm font-medium  border-4 text-white border-b-white bg-stone-900 rounded-md ",
+                  "w-max h-max  ml-4 p-2 text-sm font-medium  border-4 text-white border-b-white bg-stone-900 rounded-md ",
                   {
                     "bg-black  text-zinc-800 border-zinc-800": theme !== "dark",
                   }

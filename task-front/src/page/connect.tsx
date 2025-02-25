@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import Api from "../components/callApi";
 import Nav from "../components/nav";
+import { motion } from "framer-motion";
 
 const Connect = () => {
   const { theme } = Theme();
@@ -24,6 +25,12 @@ const Connect = () => {
     };
     fetchUser();
   }, [nav, token]);
+
+  const salutation = ` Bonjour ${res?.sexe === "M" ? "monsieur" : "madame"} ${
+    res?.name
+  } ,quelle activités vous passionne, aujourd'hui. Nous vous, souhaitons une belle journée`;
+  const salutaionTab = salutation.split(",");
+
   return (
     <div
       className={cn("flex flex-col bg-zinc-950 h-screen", {
@@ -33,20 +40,28 @@ const Connect = () => {
       <Header />
       <main className="flex flex-row">
         <Nav></Nav>
-        <div className="h-screen flex flex-3   justify-center ">
+        <div className="h-screen flex flex-3 w-full   justify-center ">
           <div
-            className={cn("p-2 w-80 mt-20 rounded-md  h-96 bg-zinc-800", {
+            className={cn("p-2  mt-20 rounded-md w-3/4  h-96 bg-zinc-800", {
               "bg-zinc-50": theme !== "dark",
             })}
           >
             <div
               className={cn(
-                " w-80 rounded-md text-2xl font-medium select-none   h-96 bg-gradient-to-r from-blue-500   to-purple-800 bg-clip-text text-transparent "
+                " w-full flex ml-10 mt-10 flex-col rounded-md text-4xl font-medium select-none   h-96 bg-gradient-to-r from-green-500   to-red-900 bg-clip-text text-transparent "
               )}
             >
-              bonjour {res?.sexe == "M" ? "monsieur" : "madame"} {res?.name}{" "}
-              quel activités vous passionne aujourd'hui. Nous vous souhaitons
-              une belle journée
+              {salutaionTab.map((el, index) => (
+                <motion.p
+                  style={{ transition: "0.5s" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: index * 1 }}
+                  key={index}
+                >
+                  {el}
+                </motion.p>
+              ))}
             </div>
           </div>
         </div>

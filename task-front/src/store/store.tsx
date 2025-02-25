@@ -45,8 +45,8 @@ interface toastI {
   closed: boolean;
 }
 type useTheme = {
-  disposition: string;
-  changeDisposition: () => void;
+  disposition: string | null;
+  changeDisposition: (el: string) => void;
   theme: string;
   toggleTheme: () => void;
   user: UserI;
@@ -71,11 +71,8 @@ interface UserI {
 }
 
 export const Theme = create<useTheme>((set) => ({
-  disposition: "grille",
-  changeDisposition: () =>
-    set((state) => ({
-      disposition: state.disposition === "grille" ? "liste" : "grille",
-    })),
+  disposition: localStorage.getItem("disposition"),
+  changeDisposition: (el) => set({ disposition: el }),
   theme: "dark",
   toggleTheme: () =>
     set((state) => ({ theme: state.theme === "dark" ? "light" : "dark" })),

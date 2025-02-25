@@ -13,8 +13,6 @@ const token=authHeader.replace("Bearer"," ").trim();
 next()
 }catch (error) {
  res.status(401).json({error:"Invalid token"})
-
- 
 }
 }
 module.exports=authentification

@@ -16,10 +16,11 @@ const AddTask = () => {
     const content = form.get("content") as string;
     const DateToCreate = new Date().toLocaleDateString();
     const TimeToCreate = new Date().toLocaleTimeString();
+    const complete = false as boolean;
     e.currentTarget.reset();
     const response = await Api.post(
       "/getUser/addTasks",
-      { content, DateToCreate, TimeToCreate },
+      { content, DateToCreate, TimeToCreate, complete },
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -40,7 +41,7 @@ const AddTask = () => {
         <Nav />
         <main className="flex flex-col h-screen items-center  w-full">
           <h1 className="text-lg font-medium uppercase text-zinc-50 mt-10">
-            Ajouter voutre tache ici
+            Ajouter votre tache ici
           </h1>
           <form
             action=""

@@ -9,6 +9,7 @@ import {
   FileArchive,
   Home,
   Settings,
+  Check,
 } from "lucide-react";
 import Api from "./callApi";
 
@@ -29,7 +30,7 @@ const Nav = () => {
       }
     };
     fetchUser();
-  }, [nav, token]);
+  }, [nav, token, res]);
 
   useEffect(() => {
     const byteArray = new Uint8Array(res?.image.data.data);
@@ -41,9 +42,9 @@ const Nav = () => {
   }, [res?.image]);
 
   return (
-    <div
+    <nav
       className={cn(
-        "flex flex-col flex-0.5 font-medium rounded-lg ml-4 shadow-2xl  text-md h-screen text-slate-200  w-52 b",
+        "flex flex-col flex-0.5 sticky bottom-0  font-medium rounded-lg ml-4 shadow-2xl  text-md h-screen text-slate-200  w-52 b",
         {
           "bg-neutral-200 text-black": theme !== "dark",
         }
@@ -66,7 +67,7 @@ const Nav = () => {
             </div>
           )}
         </div>
-        <div className="font-medium text-sm mt-2 ">{res?.name}</div>
+        <div className="font-medium text-sm mt-2 capitalize ">{res?.name}</div>
         <NavLink to={"/params"} className="mt-2 cursor-pointer">
           <Settings />
         </NavLink>
@@ -90,6 +91,10 @@ const Nav = () => {
           <NavLink to={"/getTask"} className="flex flex-row gap-2 pl-3">
             <Database /> Tous les taches
           </NavLink>
+          <NavLink to={"/compltetTask"} className="flex flex-row gap-2 pl-3">
+            <Check className="text-lime-100 rounded-full p-1 bg-blue-500" />{" "}
+            tache effectué
+          </NavLink>
         </p>
         <p className="flex flex-col gap-3 ">
           <label className="text-2xl" htmlFor="">
@@ -112,7 +117,7 @@ const Nav = () => {
           </NavLink>
         </p>
       </main>
-    </div>
+    </nav>
   );
 };
 

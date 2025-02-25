@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "flex bg-zinc-100 top-0 sticky shadow-lg flex-row justify-between pt-3 pb-2 ",
+        "flex bg-zinc-100 top-0 sticky z-10 shadow-lg flex-row justify-between pt-3 pb-2 ",
         {
           "bg-zinc-950": theme === "dark",
         }
