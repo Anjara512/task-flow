@@ -3,7 +3,7 @@ import { cn } from "../util/utils";
 import { Theme } from "../store/store";
 import { UserCircleIcon } from "lucide-react";
 import { Button } from "../components/input";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 

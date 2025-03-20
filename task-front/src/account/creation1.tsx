@@ -5,18 +5,26 @@ import Input, { Button } from "../components/input";
 import { Mail } from "lucide-react";
 import { Theme } from "../store/store";
 import { useNavigate } from "react-router-dom";
+import Api from "../util/callApi";
 
 const Creation1 = () => {
   const nav = useNavigate();
   const { theme, user } = Theme();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email") as string;
     if (email) {
-      user.email = email;
-      console.log(user);
-      nav("/create2");
+      try {
+        const response = await Api.post("/send-code", { email });
+        if (response) {
+          console.log(response.data);
+          nav("/email");
+          user.email = email;
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 

@@ -17,12 +17,14 @@ import Params from "./setting/params";
 import Multimedia from "./Notes/multimedia";
 import Accountparams from "./setting/accountparams";
 import CompleteTask from "./Task/completeTask";
+import Email from "./account/email";
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/create1" element={<Creation1 />} />
+        <Route path="/email" element={<Email />} />
         <Route path="/create2" element={<Creation2 />} />
         <Route path="/create3" element={<Creation3 />} />
         <Route path="/finally" element={<Finally />} />

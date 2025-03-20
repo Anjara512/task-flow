@@ -6,7 +6,62 @@ const jwt=require('jsonwebtoken');
 const authentification = require( '../middleware/auth' );
 const upload = require( '../middleware/upload' );
 const sharp=require('sharp');
+const nodemailer=require('nodemailer')
 
+
+
+
+
+const transporter=nodemailer.createTransport({
+  secureConnection:false,
+  port:587,
+  tls:{
+   ciphers:"SSLv3"
+  },
+  // service:"Gmail",
+
+  auth:{
+   user:process.env.EMAIL,
+   pass:process.env.EMAIL_PASSWORD
+
+  }
+ });
+
+
+
+routeur.post('/send-code',async(req,res)=>{
+  const {email}=req.body;
+
+  const confirmationCode=Math.floor(1000+Math.random()*9000);
+  const mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: 'Test Email Nodemailer',
+    html: '<h1>Ceci est un email en HTML envoyé avec Nodemailer!</h1>'+confirmationCode  // Contenu HTML
+  };
+  
+
+     transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log('Erreur:', error);
+      } else {
+        console.log('Email envoyé:', info.response);
+      }
+    });
+    
+    const codeStocké=confirmationCode;
+    res.send('email confirmer avec succe')
+
+})
+routeur.post('/verifyCode',async(req,res)=>{
+  const {code}=req.body;
+  if(code==codeStocké.valeur){
+    res.send('code validé');
+  }
+  else{
+    res.status(400).send("code eronner")
+  }
+})
 
 
 //creation de l'utilisatueur
@@ -37,14 +92,11 @@ routeur.post('/createUser',upload.single("image"),async(req,res)=>{
 
 //connexion de l'utilisateur
 routeur.post('/login',async(req,res)=>{
-try{ const {email,password}=req.body;
+ const {email,password}=req.body;
  const user=await User.findUser(email,password);
 const token =jwt.sign({id:user._id},process.env.SECRETE_KEY);
 res.send({user,token});
-}catch(err){
-  res.status(404).send("connexion imposible verifier vos information");
 
-}
 });
 
 

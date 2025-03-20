@@ -4,10 +4,8 @@ const bcrypt=require('bcryptjs');
 
 
 const imageSchema=new mongoose.Schema({
-
     data:Buffer,
     contentType:String
-  
 })
 
 const TaskSchema=new mongoose.Schema({

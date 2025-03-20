@@ -11,7 +11,7 @@ import {
   Settings,
   Check,
 } from "lucide-react";
-import Api from "./callApi";
+import Api from "../util/callApi";
 
 const Nav = () => {
   const [res, setres] = useState<User>();

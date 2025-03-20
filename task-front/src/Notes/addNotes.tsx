@@ -4,7 +4,7 @@ import { Theme } from "../store/store";
 import Header from "../components/Header";
 import Nav from "../components/nav";
 import { FaPhotoVideo } from "react-icons/fa";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import { Button } from "../components/input";
 import { useNavigate } from "react-router-dom";
 

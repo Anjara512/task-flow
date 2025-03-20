@@ -3,7 +3,7 @@ import { Theme } from "../store/store";
 import Header from "../components/Header";
 import { GroupIcon, Map, User } from "lucide-react";
 import { Button } from "../components/input";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import { useNavigate } from "react-router-dom";
 
 const AddDates = () => {

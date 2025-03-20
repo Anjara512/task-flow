@@ -6,12 +6,7 @@ interface Task {
   TimeToCreate: string;
   conplete: boolean;
 }
-// interface imageData {
-//   contentType: string;
-//   data: {
-//     data: number[];
-//   };
-// }
+
 export interface Note {
   _id: string;
   content: string;
@@ -44,6 +39,11 @@ interface toastI {
   state: string;
   closed: boolean;
 }
+
+type UseConnexion = {
+  connexion: boolean;
+  toogleConnexion: () => void;
+};
 type useTheme = {
   disposition: string | null;
   changeDisposition: (el: string) => void;
@@ -111,5 +111,12 @@ export const useUser = create<Scan>((set) => ({
   },
   getter: (newBies) => {
     set(() => ({ Utilisateur: newBies }));
+  },
+}));
+
+export const useConnexion = create<UseConnexion>((set) => ({
+  connexion: false,
+  toogleConnexion: () => {
+    set((state) => ({ connexion: state.connexion === true ? false : true }));
   },
 }));

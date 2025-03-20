@@ -3,7 +3,7 @@ import { cn } from "../util/utils";
 import { Theme, User } from "../store/store";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import Nav from "../components/nav";
 import { motion } from "framer-motion";
 

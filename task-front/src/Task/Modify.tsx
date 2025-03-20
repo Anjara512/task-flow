@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import { cn } from "../util/utils";
 import Header from "../components/Header";
 import Nav from "../components/nav";

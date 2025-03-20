@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import Nav from "../components/nav";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Note, Theme } from "../store/store";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 
 const Multimedia = () => {
   const [mynote, setmynote] = useState<Note[]>();

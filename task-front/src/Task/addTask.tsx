@@ -3,7 +3,7 @@ import Nav from "../components/nav";
 import { cn } from "../util/utils";
 import { Theme } from "../store/store";
 import { SendHorizontalIcon } from "lucide-react";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import { useNavigate } from "react-router-dom";
 
 const AddTask = () => {

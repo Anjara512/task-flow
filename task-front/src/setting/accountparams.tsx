@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Nav from "../components/nav";
 import { cn } from "../util/utils";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import { Theme, User } from "../store/store";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOffIcon, Mail, User2 } from "lucide-react";

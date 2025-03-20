@@ -3,11 +3,12 @@ import { cn } from "../util/utils";
 import Header from "../components/Header";
 import Nav from "../components/nav";
 import { NavLink, useNavigate } from "react-router-dom";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import { Theme } from "../store/store";
 import { Check, Pencil, Search, Trash2 } from "lucide-react";
 import { Button } from "../components/input";
 import Time from "../components/time";
+import { motion } from "framer-motion";
 export interface tache {
   _id: string;
   content: string;
@@ -88,15 +89,21 @@ const GetTask = () => {
 
   return (
     <div
-      style={{ backgroundSize: "cover", height: "500vh" }}
-      className={cn("flex flex-col flex-4 w-screen   bg-stone-950  ", {
-        "bg-stone-50": theme !== "dark",
-      })}
+      style={{ backgroundSize: "cover" }}
+      className={cn(
+        "flex flex-col flex-4 w-screen h-screen overflow-y-scroll    bg-stone-950  ",
+        {
+          "bg-stone-50": theme !== "dark",
+        }
+      )}
     >
       <Header></Header>
       <main className={cn("flex flex-row h-screen w-screen")}>
         <Nav />
-        <div className="flex flex-col w-full   ">
+        <div
+          style={{ scrollbarWidth: "none" }}
+          className="flex flex-col w-full overflow-y-scroll  "
+        >
           <main className="flex   justify-between mx-4   bg-zinc-transparent ">
             <div
               className={cn(
@@ -208,14 +215,18 @@ const GetTask = () => {
                     <span className="text-white block">{el.DateToCreate}</span>
                   </li>
                 ))
-              : task?.map((el) => (
-                  <li
+              : task?.map((el, index) => (
+                  <motion.li
+                    style={{ transition: "0.5s" }}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: index * 1 }}
                     key={el._id}
                     className={cn(
-                      " bg-neutral-800 hover:outline-none flex justify-between  rounded-md p-5 w-40 h-max  font-medium  text-white",
+                      " bg-neutral-800 hover:outline-none flex justify-between  rounded-md md:p-5 p-2 w-40 h-max  font-medium  text-white",
                       {
                         "text-zinc-800 bg-neutral-300": theme !== "dark",
-                        "w-3/4 mx-2 flex flex-row gap-4  ":
+                        "md:w-3/4 w-20 mx-2 flex flex-row gap-2  ":
                           disposition !== "grille",
                         "border-blue-500 border-2": id.indexOf(el._id) !== -1,
                       }
@@ -263,7 +274,7 @@ const GetTask = () => {
                         {el.DateToCreate}
                       </span>
                     </span>
-                  </li>
+                  </motion.li>
                 ))}
           </ul>
         </div>

@@ -4,7 +4,7 @@ import { Note, Theme } from "../store/store";
 import Header from "../components/Header";
 import Nav from "../components/nav";
 import { NavLink } from "react-router-dom";
-import Api from "../components/callApi";
+import Api from "../util/callApi";
 import { Trash2 } from "lucide-react";
 
 const GetNote = () => {
@@ -73,13 +73,16 @@ const GetNote = () => {
         <Nav></Nav>
         <div className="flex w-full h-screen flex-col flex-3   ">
           <div className={cn("flex flex-row justify-between px-5 ", {})}>
-            <NavLink
-              className="w-max h-max font-medium hover:bg-blue-100 focus:ring-2 
+            <div className="mt-10 flex flex-row justify-between w-full">
+              <p>ovni</p>
+              <NavLink
+                className="w-max h-max font-medium hover:bg-blue-100 focus:ring-2 
      ring-green-500 px-5 py-2.5 focus:outline-none rounded-lg bg-green-500  text-sm   ring-offset-2 cursor-pointer"
-              to={"/addNotes"}
-            >
-              nouveaux
-            </NavLink>
+                to={"/addNotes"}
+              >
+                + Ajouter de nouvelle note
+              </NavLink>
+            </div>
             {option && (
               <span>
                 <Trash2
